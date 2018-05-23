@@ -1,1 +1,0 @@
-{"Spear Taken": false, "Location": "first_room"}
