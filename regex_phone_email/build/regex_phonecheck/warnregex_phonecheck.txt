@@ -1,0 +1,20 @@
+missing module named nt - imported by os, ntpath, shutil, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named org - imported by pickle, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named _winreg - imported by platform, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named 'java.lang' - imported by platform, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named winreg - imported by platform, mimetypes, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py, urllib.request
+missing module named msvcrt - imported by subprocess, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py, getpass
+missing module named _winapi - imported by subprocess, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named _dummy_threading - imported by dummy_threading, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py
+missing module named 'org.python' - imported by copy, /home/harvey/Documents/harveysProjects/regex_phone_email/regex_phonecheck.py, xml.sax
+missing module named AppKit - imported by pyperclip
+missing module named Foundation - imported by pyperclip
+missing module named PyQt4 - imported by pyperclip
+missing module named PyQt5 - imported by pyperclip
+missing module named qtpy - imported by pyperclip
+missing module named gtk - imported by pyperclip
