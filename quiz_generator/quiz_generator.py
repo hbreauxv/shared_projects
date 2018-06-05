@@ -1,8 +1,8 @@
 #! python3
-# quiz_generator.py - creates quizzes with questions and answers in
+# quiz_generator.py - generates quizzes from csv with questions and answers in
 # random order, including an answer key
 
-import random, os, shutil
+import random, os, shutil, csv
 
 # Checks if you have a test folder, makes one if you dont
 if not os.path.exists((os.getcwd() + '/Quiz Bank/')):
@@ -10,6 +10,14 @@ if not os.path.exists((os.getcwd() + '/Quiz Bank/')):
 
 # Change directory to our tests folder so that we keep things tidy
 os.chdir(os.getcwd() + '/Quiz Bank/')
+
+
+testbank = {}
+# Open csv file, turn it into a dictionary to be used with program
+with open('testbank.csv') as csvfile:
+    for row in csvfile:
+        split = row.split(',')
+        testbank[split[0]] = split[1]
 
 capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
    'Arkansas': 'Little Rock', 'California': 'Sacramento', 'Colorado': 'Denver',
@@ -29,21 +37,35 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
    'Montpelier', 'Virginia': 'Richmond', 'Washington': 'Olympia', 'West' +
    ' Virginia': 'Charleston', 'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
 
-for quizNum in range(35):
+# Ignore our old dictionary and use the CSV
+capitals = testbank
+
+# User inputs how many tests they wanna make
+while True:
+    try:
+        quizAmount = int(input('How many quizzes would you like to make: '))
+        break
+    except ValueError:
+        print('Please enter a number\n')
+
+# User inputs the type of test
+testType = input('What kind of test is this?')
+
+for quizNum in range(quizAmount):
     # Create the quiz and answer files
-    quizFile = open('capitalsquiz%s.text' % (quizNum + 1), 'w')
-    answerKeyFile = open('capitalsquiz%s_answers.txt' % (quizNum + 1), 'w')
+    quizFile = open('quiz%s.text' % (quizNum + 1), 'w')
+    answerKeyFile = open('quiz%s_answers.txt' % (quizNum + 1), 'w')
 
     # Write quiz header
     quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
-    quizFile.write((' ' * 20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))
+    quizFile.write((' ' * 20) + '%s Quiz (Form %s)' % (testType, quizNum + 1))
     quizFile.write('\n\n')
 
     states = list(capitals.keys())
     random.shuffle(states)
 
     # Make a question for each state
-    for questionNum in range(50):
+    for questionNum in range(len(capitals)):
 
         # Get right and wrong answer
         correctAnswer = capitals[states[questionNum]]
@@ -62,7 +84,7 @@ for quizNum in range(35):
         random.shuffle(answerOptions)
 
         # Write the question and the answer options to the quiz file.
-        quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
+        quizFile.write(states[questionNum] + '\n')
         for i in range(4):
             quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
             quizFile.write('\n')

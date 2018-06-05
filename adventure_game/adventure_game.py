@@ -110,7 +110,6 @@ def store():
                 print('You bought a Potion!')
                 save['Inventory']['Potions'] = save['Inventory']['Potions'] + 1
                 save['Inventory']['Coins'] = save['Inventory']['Coins'] - store_prices['Potion']
-                print(save['Inventory']['Potions'])
             else:
                 print('You dont have enough money for that!')
 
