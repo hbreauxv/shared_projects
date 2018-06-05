@@ -2,14 +2,14 @@
 # quiz_generator.py - creates quizzes with questions and answers in
 # random order, including an answer key
 
-import random, os
+import random, os, shutil
 
 # Checks if you have a test folder, makes one if you dont
-if not os.path.exists((os.getcwd() + '/tests')):
-    os.makedirs(os.getcwd() + '/tests/')
+if not os.path.exists((os.getcwd() + '/Quiz Bank/')):
+    os.makedirs(os.getcwd() + '/Quiz Bank/')
 
 # Change directory to our tests folder so that we keep things tidy
-os.chdir(os.getcwd() + '/tests/')
+os.chdir(os.getcwd() + '/Quiz Bank/')
 
 capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
    'Arkansas': 'Little Rock', 'California': 'Sacramento', 'Colorado': 'Denver',
@@ -32,7 +32,7 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
 for quizNum in range(35):
     # Create the quiz and answer files
     quizFile = open('capitalsquiz%s.text' % (quizNum + 1), 'w')
-    answerKeyFile = open('capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')
+    answerKeyFile = open('capitalsquiz%s_answers.txt' % (quizNum + 1), 'w')
 
     # Write quiz header
     quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
@@ -72,3 +72,22 @@ for quizNum in range(35):
 
     quizFile.close()
     answerKeyFile.close()
+
+# Create folder for answers
+if not os.path.exists((os.getcwd() + '/answers/')):
+    os.makedirs(os.getcwd() + '/answers/')
+
+# Create folder for quizzes
+if not os.path.exists((os.getcwd() + '/quizzes/')):
+    os.makedirs(os.getcwd() + '/quizzes/')
+
+# Copy files to folders
+for filename in os.listdir():
+    # Copy answers to answer folder, then delete them from main folder
+    if filename.endswith('answers.txt'):
+        shutil.copy(filename, os.getcwd() + '/answers/')
+        os.unlink(filename)
+    # Copy quizzes to quizzes folder, then delete them from main folder
+    elif filename.endswith('.text'):
+        shutil.copy(filename, os.getcwd()+ '/quizzes/')
+        os.unlink(filename)
