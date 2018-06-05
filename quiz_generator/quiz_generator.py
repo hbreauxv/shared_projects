@@ -2,7 +2,14 @@
 # quiz_generator.py - creates quizzes with questions and answers in
 # random order, including an answer key
 
-import random
+import random, os
+
+# Checks if you have a test folder, makes one if you dont
+if not os.path.exists((os.getcwd() + '/tests')):
+    os.makedirs(os.getcwd() + '/tests/')
+
+# Change directory to our tests folder so that we keep things tidy
+os.chdir(os.getcwd() + '/tests/')
 
 capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
    'Arkansas': 'Little Rock', 'California': 'Sacramento', 'Colorado': 'Denver',
